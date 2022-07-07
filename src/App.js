@@ -1,8 +1,12 @@
 import './App.css';
+import { useAuth } from "./hooks/useAuth"
+
 
 function App() {
-  return (
+  const { user } = useAuth();
 
+  return (
+    user ? <AuthenticatedApp /> : <UnauthenticatedApp/>
   );
 }
 
