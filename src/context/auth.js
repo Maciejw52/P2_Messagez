@@ -1,6 +1,6 @@
 import React from "react";
 import { createContext, useState } from "react";
-import { loginWithGoogleAccount } from "../services/firebase"
+import { loginWithGoogleAccount, Logout } from "../services/firebase"
 
 export const AuthContext = createContext();
 
@@ -19,10 +19,13 @@ export const AuthProvider = (params) => {
   }
 
   const logout = async () => {
+    console.log("HADWE")
     setCurrentUser(null);
+    Logout();
+    window.location.reload();
   }
 
-  const value = { currentUser, login };
+  const value = { currentUser, login, logout };
 
   return <AuthContext.Provider value={value} {...params} />
-} 
+}
