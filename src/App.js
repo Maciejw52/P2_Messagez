@@ -8,8 +8,7 @@ function App() {
   const { currentUser } = useAuth();
 
   return (
-    <div className="container">
-      <h1>MessagingApp </h1>
+    <div className="App">
         {currentUser !== null ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </div>
   );

@@ -13,8 +13,9 @@ export const AuthProvider = (params) => {
     const currentUser = await loginWithGoogleAccount();
     if (!currentUser) {
       console.log("User failed to login!");
+    } else {
+      setCurrentUser(currentUser);
     }
-    setCurrentUser(currentUser);
   }
 
   //logout

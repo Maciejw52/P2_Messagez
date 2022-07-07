@@ -10,12 +10,6 @@ export function AuthenticatedApp() {
 
   return (
     <>
-      <h2>Authenticated! You can logout if you want</h2>
-      <div>
-        <Button className="btn btn-success logout" onClick={logout}>
-          Logout
-        </Button>
-      </div>
     </>
   )
 }
