@@ -8,21 +8,19 @@ export const AuthProvider = (params) => {
 
   const [currentUser, setCurrentUser] = useState(null);
 
+  // login
   const login = async () => {
-  
     const currentUser = await loginWithGoogleAccount();
-
     if (!currentUser) {
       console.log("User failed to login!");
     }
     setCurrentUser(currentUser);
   }
 
+  //logout
   const logout = async () => {
-    console.log("HADWE")
     setCurrentUser(null);
     Logout();
-    window.location.reload();
   }
 
   const value = { currentUser, login, logout };

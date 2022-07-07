@@ -11,7 +11,7 @@ const firebaseConfig = {
   appId: "1:28936920061:web:81f1dfd69b8eded8fd1794"
 }
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 
 export async function loginWithGoogleAccount() {
