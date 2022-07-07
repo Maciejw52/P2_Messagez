@@ -10,19 +10,19 @@ export const AuthProvider = (params) => {
 
   const login = async () => {
   
-    const user = await loginWithGoogleAccount();
+    const currentUser = await loginWithGoogleAccount();
 
-    if (!user) {
+    if (!currentUser) {
       console.log("User failed to login!");
     }
-    setCurrentUser(user);
+    setCurrentUser(currentUser);
   }
 
   const logout = async () => {
     setCurrentUser(null);
   }
 
-  const value = { user, login };
+  const value = { currentUser, login };
 
   return <AuthContext.Provider value={value} {...params} />
 } 

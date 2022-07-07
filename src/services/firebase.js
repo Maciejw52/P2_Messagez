@@ -12,7 +12,7 @@ const app = initializeApp(firebaseConfig);
 export async function loginWithGoogleAccount() {
   // returns user data if sign in successful
   try {
-    const provider = newGoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
     
     const { user } = await signInWithPopup(getAuth(), provider);
 
