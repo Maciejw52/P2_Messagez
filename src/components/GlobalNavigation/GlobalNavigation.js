@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Navbar,
-  NavDropdown,
   Nav,
   Container,
   Button
@@ -24,10 +23,10 @@ function GlobalNavigation() {
       <Navbar.Brand className="NavbarTitle">Messagez</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-          <Nav.Link>Group Chats</Nav.Link>
-            <Nav.Link>New Message</Nav.Link>
-            <Nav.Link>Friends</Nav.Link>
+          <Nav className="me-auto">
+            <Link to="../groupChats" className="nav-link">Group Chats</Link>
+            <Link to="../newMessage" className="nav-link">New Message</Link>
+            <Link to="../friends" className="nav-link">Friends</Link>
         </Nav>
         <Nav>
             <Nav.Link>{currentUser !== null ? currentUser.displayName : null}</Nav.Link>
