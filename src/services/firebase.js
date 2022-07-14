@@ -3,12 +3,12 @@ import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/
 
 
 const firebaseConfig = {
-  apiKey: "XXX",
-  authDomain: "XXX",
-  projectId: "XXX",
-  storageBucket: "XXX",
-  messagingSenderId: "XXX",
-  appId: "XXX"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 }
 
 initializeApp(firebaseConfig);
