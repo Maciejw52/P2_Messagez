@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Navbar,
-  NavDropdown,
   Nav,
   Container,
   Button
@@ -13,7 +12,6 @@ import "./GlobalNavigationStyles.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
 function GlobalNavigation() {
 
   const { currentUser, login, logout } = useAuth();
@@ -21,16 +19,17 @@ function GlobalNavigation() {
   return (
     <Navbar className="navbar" collapseOnSelect expand="lg" variant="dark">
       <Container>
-      <Navbar.Brand className="NavbarTitle">Messagez</Navbar.Brand>
+        <Link to="/" className='navbar-brand NavbarTitle'>Messagez</Link>
+      
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-      <Navbar.Collapse id="responsive-navbar-nav">
+      <Navbar.Collapse id="responsive-navbar-nav">  
         <Nav className="me-auto">
-          <Nav.Link>Group Chats</Nav.Link>
-            <Nav.Link>New Message</Nav.Link>
-            <Nav.Link>Friends</Nav.Link>
+          <Link to="groupChats" className='nav-link'>Group Chats</Link>
+            <Link to="newMessage" className='nav-link'>New Message</Link>
+            <Link to="friends" className='nav-link'>Friends</Link>
         </Nav>
         <Nav>
-            <Nav.Link>{currentUser !== null ? currentUser.displayName : null}</Nav.Link>
+            <Link to="/account" className='nav-link'>{currentUser !== null ? currentUser.displayName : null}</Link>
             {currentUser === null ?
               <Nav.Item>
                 <Button className="btn login" onClick={login}>
