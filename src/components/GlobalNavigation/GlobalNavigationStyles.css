@@ -1,0 +1,22 @@
+.navbar {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #121722;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #000;
+  padding-left: 25px;
+}
+
+.NavbarTitle {
+  font-size: 30px;
+}
+
+.login {
+  background-color: #1D63FF;
+  width: 82px;
+}
+
+.logout {
+  background-color: #1D63FF;
+  width: 82px;
+}

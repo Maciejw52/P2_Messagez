@@ -3,13 +3,14 @@ import { useAuth } from "./hooks/useAuth"
 import { AuthenticatedApp } from "../src/components/AuthenticatedApp/AuthenticatedApp"
 import { UnauthenticatedApp } from '../src/components/UnauthenticatedApp/Unauthenticated';
 
-
-
 function App() {
-  const { user } = useAuth();
+
+  const { currentUser } = useAuth();
 
   return (
-    user ? <AuthenticatedApp /> : <UnauthenticatedApp/>
+    <div className="App">
+        {currentUser !== null ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+    </div>
   );
 }
 

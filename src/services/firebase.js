@@ -1,31 +1,47 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 
 
 const firebaseConfig = {
-  // My configs
+  apiKey: "XXX",
+  authDomain: "XXX",
+  projectId: "XXX",
+  storageBucket: "XXX",
+  messagingSenderId: "XXX",
+  appId: "XXX"
 }
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 
 export async function loginWithGoogleAccount() {
   // returns user data if sign in successful
   try {
     const provider = new GoogleAuthProvider();
-    
-    const { user } = await signInWithPopup(getAuth(), provider);
-
-    console.log(user);
+    const auth = getAuth();
+    const { user } = await signInWithPopup(auth, provider);
 
     return {
       uid: user.uid,
       displayName: user.displayName
     }
 
-  } catch (err) {
-    if(err.code !== "auth/cancelled-popul-request"){
-      console.error(err);
+  } catch (error) {
+    if (error.code !== 'auth/cancelled-popup-request') {
+        console.error(error);
     }
+  }
+}
+
+export async function Logout() {
+  const auth = getAuth();
+
+  try {
+    signOut(auth)
+    console.log("Signed out");
+    return true;
+  } catch {
+    console.log("Failed to sign-out");
+    return false;
   }
 }
