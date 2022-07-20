@@ -5,8 +5,10 @@ import {
 
 export default function SearchBar() {
   return (
-    <Form>
-      <Form.Control type="search"  placeholder="Search" />
+    <Form  style={{width: "100%"}}>
+      <Form.Group  controlId="">
+        <Form.Control type="search"  placeholder="Search" />
+      </Form.Group>
     </Form>
   )
 }
