@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NewMessage from "../NewMessage/NewMessage";
 import Friends from "../Friends/Friends";
 import Account from "../Account/Account";
-import GroupChats from "../../GroupChats/GroupChats";
+import GroupChats from "../GroupChats/GroupChats";
 import Homepage from "../Homepage/Homepage";
 
 export function AuthenticatedApp() {

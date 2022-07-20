@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 
 
@@ -11,7 +12,8 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID
 }
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
 export async function loginWithGoogleAccount() {
@@ -44,4 +46,18 @@ export async function Logout() {
     console.log("Failed to sign-out");
     return false;
   }
+}
+
+export async function sendMessage(groupChatId, user, text){
+  
+  try {
+    await addDoc(collection(db, 'chat-rooms', groupChatId, 'messages'), {
+        uid: user.uid,
+        displayName: user.displayName,
+        text: text.trim(),
+        timestamp: serverTimestamp(),
+    });
+} catch (error) {
+    console.error(error);
+}
 }

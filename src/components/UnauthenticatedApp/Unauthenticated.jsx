@@ -9,7 +9,15 @@ export function UnauthenticatedApp() {
 
   return (
     <section className="flex-container unauthWelcomeScreen ">
-      <div className="mainTemplate">Please Login</div>
+      <div className="mainTemplate">
+        <div className="messagezMain">
+          Messagez makes it easy and fun to stay close to your favourite people.
+        </div>
+        <br/>
+        <div className="loginPrompt">
+          Please Login to use Messagez
+        </div>
+      </div>
     </section>
   )
 }
