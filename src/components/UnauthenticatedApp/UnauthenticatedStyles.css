@@ -8,11 +8,15 @@
 
 .mainTemplate {
   margin-top: 20px;
-  min-height: ;
-  padding: 10px;
+  min-height: 400px;
+  padding: 15px;
   width: 567.4px;
   background-color: aliceblue;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 850px) {
@@ -30,5 +34,11 @@
 
 .loginPrompt {
   text-align: center;
-  font-size: min(1.5rem, 5vw);
+  font-size: min(1.25rem, 5vw);
+  user-select: none;
+}
+
+.loginButtonUnauth {
+  margin-top: 10px;
+  white-space: nowrap;
 }

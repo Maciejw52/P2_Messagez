@@ -1,6 +1,6 @@
 import React from "react";
 import { createContext, useState } from "react";
-import { loginWithGoogleAccount, Logout } from "../services/firebase"
+import { loginWithGoogleAccount, Logout } from "../services/firebase";
 
 export const AuthContext = createContext();
 
@@ -18,7 +18,7 @@ export const AuthProvider = (params) => {
     }
   }
 
-  //logout
+  // logout
   const logout = async () => {
     setCurrentUser(null);
     Logout();
