@@ -1,25 +1,27 @@
 import React from "react"
 import {
-  BrowserRouter as Router,
   Routes,
   Route
-} from 'react-router-dom';
-import Homepage from "../Homepage/Homepage";
-import GroupChats from "../GroupChats/GroupChats";
-import Account from "../Account/Account";
-import Friends from "../Friends/Friends";
+} from "react-router-dom"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NewMessage from "../NewMessage/NewMessage";
+import Friends from "../Friends/Friends";
+import Account from "../Account/Account";
+import GroupChats from "../GroupChats/GroupChats";
+import Homepage from "../Homepage/Homepage";
 
 export function AuthenticatedApp() {
 
   return (
-    <Routes>
-      <Route exact path="/" element={<Homepage />} />
-      <Route path="/group_chats" element={<GroupChats />} />
-      <Route path="" element={<></>} />
-      <Route path="/friends" element={<Friends />} />
-      <Route exact path="/account" element={<Account />} />
-    </Routes>
+    <div>
+      <Routes>  
+        <Route exact path="/" element={<Homepage/>}/>
+        <Route exact path="/groupChats" element={<GroupChats/>}/>
+        <Route exact path="/newMessage" element={<NewMessage/>}/>
+        <Route exact path="/friends" element={<Friends/>}/>
+        <Route exact path="/account" element={<Account/>}/>
+      </Routes>
+    </div>
   )
 }

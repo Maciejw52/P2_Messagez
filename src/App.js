@@ -2,10 +2,10 @@ import './App.css';
 import { useAuth } from "./hooks/useAuth"
 import { AuthenticatedApp } from "../src/components/AuthenticatedApp/AuthenticatedApp"
 import { UnauthenticatedApp } from '../src/components/UnauthenticatedApp/Unauthenticated';
-import GlobalNavigation from "./components/GlobalNavigation/GlobalNavigation";
+import GlobalNavigation from "./components/GlobalNavigation/GlobalNavigation"
 import {
-  BrowserRouter as Router
-} from "react-router-dom";
+  BrowserRouter as Router,
+} from "react-router-dom"
 
 function App() {
 
@@ -13,10 +13,10 @@ function App() {
 
   return (
     <Router>
+    <GlobalNavigation />
       <div className="App">
-        <GlobalNavigation />
         {currentUser !== null ? <AuthenticatedApp /> : <UnauthenticatedApp />}
-      </div>  
+      </div>
     </Router>
   );
 }

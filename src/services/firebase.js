@@ -1,17 +1,19 @@
 import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDVZuPg9iRcYT7c_rsrMExGa2FnyL09Sdw",
-  authDomain: "messagingapp-d8178.firebaseapp.com",
-  projectId: "messagingapp-d8178",
-  storageBucket: "messagingapp-d8178.appspot.com",
-  messagingSenderId: "28936920061",
-  appId: "1:28936920061:web:81f1dfd69b8eded8fd1794"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 }
 
-initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
 export async function loginWithGoogleAccount() {
@@ -44,4 +46,18 @@ export async function Logout() {
     console.log("Failed to sign-out");
     return false;
   }
+}
+
+export async function sendMessage(groupChatId, user, text){
+  
+  try {
+    await addDoc(collection(db, 'chat-rooms', groupChatId, 'messages'), {
+        uid: user.uid,
+        displayName: user.displayName,
+        text: text.trim(),
+        timestamp: serverTimestamp(),
+    });
+} catch (error) {
+    console.error(error);
+}
 }
