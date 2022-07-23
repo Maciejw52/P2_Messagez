@@ -6,9 +6,8 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewMessage from "../NewMessage/NewMessage";
-import Friends from "../Friends/Friends";
 import Account from "../Account/Account";
-import GroupChats from "../GroupChats/GroupChats";
+import GroupChats from "../GroupChat/GroupChat";
 import Homepage from "../Homepage/Homepage";
 
 export function AuthenticatedApp() {
@@ -17,9 +16,9 @@ export function AuthenticatedApp() {
     <div>
       <Routes>  
         <Route exact path="/" element={<Homepage/>}/>
-        <Route path="/groupChats" element={<GroupChats/>}/>
+        <Route path="/chats" element={<GroupChats />} />
+        <Route path="/chats/:id" element={<GroupChats />} />
         <Route exact path="/newMessage" element={<NewMessage/>}/>
-        <Route exact path="/friends" element={<Friends/>}/>
         <Route exact path="/account" element={<Account/>}/>
       </Routes>
     </div>

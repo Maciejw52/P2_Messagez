@@ -24,9 +24,9 @@ function GlobalNavigation() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">  
         <Nav className="me-auto">
-          <Link to="groupChats" className='nav-link'>Chats</Link>
+          <Link to="chats" className='nav-link'>Chats</Link>
             <Link to="newMessage" className='nav-link'>New Message</Link>
-            <Link to="friends" className='nav-link'>Friends</Link>
+            <Link to="/" className='nav-link'>Friends</Link>
         </Nav>
         <Nav>
             <Link to="/account" className='nav-link'>{currentUser !== null ? currentUser.displayName : null}</Link>

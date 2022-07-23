@@ -48,16 +48,17 @@ export async function Logout() {
   }
 }
 
-export async function sendMessage(groupChatId, user, text){
+export async function sendMessage(chatId, user, text){
   
   try {
-    await addDoc(collection(db, 'group-chats', groupChatId, 'messages'), {
+    await addDoc(collection(db, 'chats', chatId, 'messages'), {
         uid: user.uid,
         displayName: user.displayName,
         text: text.trim(),
         timestamp: serverTimestamp(),
     });
-} catch (error) {
-    console.error(error);
+  } catch (error) {
+      console.log(error);
+  }
 }
-}
+

@@ -7,9 +7,9 @@ import {
   Form
 } from "react-bootstrap"
 
-export default function InputMessage({ groupChatId }) {
+export default function InputMessage({ chatId }) {
 
-    const { user } = useAuth();
+    const { currentUser } = useAuth();
     const [value, setValue] = useState('');
 
     const handleChange = (event) => {
@@ -18,7 +18,7 @@ export default function InputMessage({ groupChatId }) {
 
     const handleSubmitMessage = (event) => {
         event.preventDefault();
-        sendMessage(groupChatId, user, value);
+        sendMessage(chatId, currentUser, value);
         setValue('');
     };
 
@@ -28,7 +28,7 @@ export default function InputMessage({ groupChatId }) {
         className="messageInputContainer">
           <Form.Control
               type="text"
-              placeholder="Enter a message"
+              placeholder="Aa"
               value={value}
               onChange={handleChange}
               className="messageInput"

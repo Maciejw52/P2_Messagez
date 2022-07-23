@@ -1,13 +1,11 @@
 import React from 'react'
-import "./GroupChats.css";
+import "./GroupChatsNav.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 
 import { Groups }  from "./TempGroupChats";
 
 function GroupChatsList() {
-
-  
 
   return (
     <div style={{display: "flex", felxDirection: "column"}}>
@@ -26,7 +24,7 @@ function GroupChatsList() {
             {Groups.map((SingleGroupChat, key) => {
               return (
                 <div key={key}>
-                <Link style={{ textDecoration: 'none' }} to={`/${SingleGroupChat.title}`}>
+                <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.title}`}>
                 <li key={SingleGroupChat.title} className="singleGroupChatContainer">
                     <div className="chatIcon" ><img style={{height: "48px", width: "48px"}} src={SingleGroupChat.icon}></img></div>
                     <span className="">{SingleGroupChat.title}</span>
