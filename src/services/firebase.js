@@ -51,7 +51,7 @@ export async function Logout() {
 export async function sendMessage(groupChatId, user, text){
   
   try {
-    await addDoc(collection(db, 'chat-rooms', groupChatId, 'messages'), {
+    await addDoc(collection(db, 'group-chats', groupChatId, 'messages'), {
         uid: user.uid,
         displayName: user.displayName,
         text: text.trim(),

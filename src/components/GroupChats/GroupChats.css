@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  padding: 6px;
 }
 
 .titleComp {
@@ -28,4 +29,24 @@
 .chatsAll {
   height: min(100%,fit-content);
   background-color: yellowgreen;
+}
+
+.singleGroupChatContainer {
+  height: 60px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.chatIcon {
+  height: 48px;
+  width: 48px;
+  padding-right: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
 }

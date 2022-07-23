@@ -1,23 +1,55 @@
 
 export const Groups = [
   {
-    title: "1dfwefds",
+    title: "GroupChat1",
     icon: "./favicon.ico",    
   },
   {
-    title: "2325tfgewgsd",
+    title: "GroupChat2",
     icon: "./favicon.ico",    
   },
   {
-    title: "3sfbhdgntg",
+    title: "3sfbhdgnt3",
     icon: "./favicon.ico",    
   },
   {
-    title: "4avfjrfyjrethd",
+    title: "GroupChat4",
     icon: "./favicon.ico",    
   },
   {
-    title: "5sgsrnrtmt",
+    title: "GroupChat5",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat6",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat7",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat8",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat9",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat0",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat10",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "GroupChat1",
+    icon: "./favicon.ico",    
+  },
+  {
+    title: "9wefgwehrhjet",
     icon: "./favicon.ico",    
   },
   {
@@ -35,6 +67,6 @@ export const Groups = [
   {
     title: "9wefgwehrhjet",
     icon: "./favicon.ico",    
-  },
+  }
 
 ]

@@ -1,15 +1,17 @@
 import React from 'react'
 import "./GroupChats.css";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 import { Groups }  from "./TempGroupChats";
 
-function GroupChats() {
+function GroupChatsList() {
 
-
+  
 
   return (
-    <section className="utilsComp">
+    <div style={{display: "flex", felxDirection: "column"}}>
+      <section className="utilsComp">
         <div className='titleComp'>
           <div className='profileImage'>Image
           </div>
@@ -20,19 +22,28 @@ function GroupChats() {
           <SearchBar/>
         </div>
         <div className='chatsAll'>
-        {Groups.map((SingleGroupChat, key) => {
-            return (
-              <div key={key}>
-                <li key={SingleGroupChat.title} className={"NavObjectHeader"}>
-                  <div className="NavComponentIcon" ><img src={SingleGroupChat.icon}></img></div>
-                  <span className="NavComponentTitle">{SingleGroupChat.title}</span>
-                </li>
+          <ul style={{listStyleType: "none"}}>
+            {Groups.map((SingleGroupChat, key) => {
+              return (
+                <div key={key}>
+                <Link style={{ textDecoration: 'none' }} to={`/${SingleGroupChat.title}`}>
+                <li key={SingleGroupChat.title} className="singleGroupChatContainer">
+                    <div className="chatIcon" ><img style={{height: "48px", width: "48px"}} src={SingleGroupChat.icon}></img></div>
+                    <span className="">{SingleGroupChat.title}</span>
+                  </li>
+                </Link>
               </div>
-            );
-          })}
+              );
+            })}
+          </ul>
         </div>
-    </section>
+      </section>
+      <section className="GroupChatContainer">
+        Hello
+      </section>
+    </div>
+
   )
 }
 
-export default GroupChats
+export default GroupChatsList
