@@ -1,19 +1,20 @@
 .utilsComp {
-  height: calc(100vh - 106px);
+  height: calc(100vh - 72px);
   width: 300px;
-  background-color: white;
+  background-color: #121722;
+  color: white;
   position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
   padding: 6px;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.3);
 }
 
 .titleComp {
   height: 56px;
   padding: 10px;
-  background-color: aqua;
+  background-color: #121722;
   display: flex;
   justify-content: space-between;
 }
@@ -21,37 +22,52 @@
 .searchMessagez {
   height: 56px;
   padding: 10px;
-  background-color: orange;
+  background-color: #121722;
   display: flex;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.3);
 }
 
 .chatsAll {
   height: min(100%, fit-content);
-  background-color: yellowgreen;
+  background-color: #121722;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #484848 #121722;
 }
 
 .singleGroupChatContainer {
-  height: 60px;
-  padding: 10px;
+  height: 48px;
+  width: auto;
   display: flex;
   align-items: center;
+  background-color: #121722;
+  border-radius: 8px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.singleGroupChatContainer:hover {
+  background-color: rgb(48, 53, 64);
 }
 
 .chatIcon {
-  height: 48px;
-  width: 48px;
-  padding-right: 30px;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .profileImage {
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
 }

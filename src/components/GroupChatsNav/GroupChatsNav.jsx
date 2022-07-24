@@ -11,7 +11,8 @@ function GroupChatsList() {
   const { currentUser } = useAuth();
 
   return (
-    <div style={{display: "flex", felxDirection: "column"}}>
+    <div style={{
+      display: "flex", felxDirection: "column", margin: 0, padding: 0}}>
       <section className="utilsComp">
         <div className='titleComp'>
           <div>
@@ -27,10 +28,10 @@ function GroupChatsList() {
           <ul style={{listStyleType: "none"}}>
             {Groups.map((SingleGroupChat, key) => {
               return (
-                <div key={key}>
+                <div key={key} className="tempName">
                 <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.title}`}>
                 <li key={SingleGroupChat.title} className="singleGroupChatContainer">
-                    <div className="chatIcon" ><img style={{height: "48px", width: "48px"}} src={SingleGroupChat.icon}></img></div>
+                      <div><img className='chatIcon' src={`${currentUser.photoURL}`} alt="GC"/></div>
                     <span className="">{SingleGroupChat.title}</span>
                   </li>
                 </Link>
