@@ -25,7 +25,6 @@ function GlobalNavigation() {
       <Navbar.Collapse id="responsive-navbar-nav">  
         <Nav className="me-auto">
           <Link to="chats" className='nav-link'>Chats</Link>
-            <Link to="newMessage" className='nav-link'>New Message</Link>
             <Link to="/" className='nav-link'>Friends</Link>
         </Nav>
         <Nav>

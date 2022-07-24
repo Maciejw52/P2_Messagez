@@ -6,10 +6,15 @@ import GlobalNavigation from "./components/GlobalNavigation/GlobalNavigation"
 import {
   BrowserRouter as Router,
 } from "react-router-dom"
+import { useEffect } from 'react';
 
 function App() {
 
   const { currentUser } = useAuth();
+
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser])
 
   return (
     <Router>

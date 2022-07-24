@@ -2,16 +2,20 @@ import React from 'react'
 import "./GroupChatsNav.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth"
 
 import { Groups }  from "./TempGroupChats";
 
 function GroupChatsList() {
 
+  const { currentUser } = useAuth();
+
   return (
     <div style={{display: "flex", felxDirection: "column"}}>
       <section className="utilsComp">
         <div className='titleComp'>
-          <div className='profileImage'>Image
+          <div>
+            <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
           </div>
           <div className='chatsTitle'>Chats</div>
           <div className='newMessageButton'>button</div>

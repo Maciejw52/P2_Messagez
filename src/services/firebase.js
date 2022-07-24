@@ -25,7 +25,8 @@ export async function loginWithGoogleAccount() {
 
     return {
       uid: user.uid,
-      displayName: user.displayName
+      displayName: user.displayName,
+      photoURL: user.photoURL
     }
 
   } catch (error) {
