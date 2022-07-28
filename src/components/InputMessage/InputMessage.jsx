@@ -7,14 +7,10 @@ import {
   Form
 } from "react-bootstrap"
 
-export default function InputMessage({ chatId }) {
+export function InputMessage({ chatId }) {
 
     const { currentUser } = useAuth();
     const [value, setValue] = useState('');
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
 
     const handleSubmitMessage = (event) => {
         event.preventDefault();
@@ -30,7 +26,9 @@ export default function InputMessage({ chatId }) {
               type="text"
               placeholder="Aa"
               value={value}
-              onChange={handleChange}
+                onChange={(event) => {
+                    setValue(event.target.value)
+                }}
               className="messageInput"
               required
               minLength={1}

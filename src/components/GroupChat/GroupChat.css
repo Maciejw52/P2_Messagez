@@ -1,0 +1,21 @@
+.MessagesContainer {
+  width: 100%;
+  height: calc(100vh - 72px);
+  padding: 15px;
+  flex-grow: 1;
+  border: 1px solid var(--color-gray);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.IconAndName {
+  height: 48px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  background-color: #121722;
+  border-radius: 8px;
+  padding-left: 0;
+}

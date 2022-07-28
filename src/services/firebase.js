@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 
 
@@ -52,9 +52,10 @@ export async function Logout() {
 export async function sendMessage(chatId, user, text){
   
   try {
-    await addDoc(collection(db, 'chats', chatId, 'messages'), {
+    await addDoc(collection(db, "chats", chatId, "messages"), {
         uid: user.uid,
         displayName: user.displayName,
+        photoURL: user.photoURL,
         text: text.trim(),
         timestamp: serverTimestamp(),
     });
@@ -63,3 +64,55 @@ export async function sendMessage(chatId, user, text){
   }
 }
 
+export async function postGroupChat(chatId, text){
+  
+  try {
+    await addDoc(collection(db, "chats", chatId, "messages"), {
+        text: text.trim(),
+        timestamp: serverTimestamp(),
+    });
+  } catch (error) {
+      console.log(error);
+  }
+}
+
+export async function getMessagesFromFirebase(chatId, callback) {
+  return onSnapshot(
+    query(
+      collection(db, "chats", chatId, "messages"),
+      orderBy("timestamp", "asc")
+    ),
+    (querySnapshot) => {
+      const messages = querySnapshot.docs.map((x) => ({
+        id: x.id,
+        ...x.data(),
+      }));
+      callback(messages);
+    }
+  )
+}
+
+
+export async function getGrouChatsFromFirebase(callback) {
+  return onSnapshot(
+    query(
+      collection(db, "chatData"),
+      //will order by lastestTime messaged
+      //orderBy("timestamp", "asc")
+    ),
+    (query) => {
+      const messages = query.docs.map((record) => ({
+        id: record.id,
+        ...record.data(),
+      }));
+      callback(messages);
+    }
+  )
+}
+
+
+// get friends call
+
+// send add friend
+
+// send delete friend

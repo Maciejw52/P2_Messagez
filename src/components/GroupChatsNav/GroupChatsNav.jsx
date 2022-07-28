@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./GroupChatsNav.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth"
+import { getGrouChatsFromFirebase } from "../../services/firebase";
 
 import { Groups }  from "./TempGroupChats";
 
 function GroupChatsList() {
 
   const { currentUser } = useAuth();
+
+
+  const [ chatNames, setChatNames] = useState([])
+
+  useEffect(() => {
+    getGrouChatsFromFirebase(setChatNames)
+    console.log(chatNames)
+  }, [])
 
   return (
     <div style={{
@@ -29,10 +38,10 @@ function GroupChatsList() {
             {Groups.map((SingleGroupChat, key) => {
               return (
                 <div key={key} className="tempName">
-                <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.title}`}>
-                <li key={SingleGroupChat.title} className="singleGroupChatContainer">
+                <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.id}`}>
+                <li key={SingleGroupChat.id} className="singleGroupChatContainer">
                       <div><img className='chatIcon' src={`${currentUser.photoURL}`} alt="GC"/></div>
-                    <span className="">{SingleGroupChat.title}</span>
+                    <span className="">{SingleGroupChat.id}</span>
                   </li>
                 </Link>
               </div>
@@ -40,9 +49,6 @@ function GroupChatsList() {
             })}
           </ul>
         </div>
-      </section>
-      <section className="GroupChatContainer">
-        Hello
       </section>
     </div>
 
