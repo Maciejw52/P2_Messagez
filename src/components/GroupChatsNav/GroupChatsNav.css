@@ -17,6 +17,11 @@
   background-color: #121722;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.chatsTitle {
+  cursor: default;
 }
 
 .searchMessagez {
@@ -64,6 +69,20 @@ ul {
 
 .profileImage {
   border-radius: 50%;
+  width: 36px;
+  height: 36px;
+}
+
+.newMessageButton {
   width: 30px;
   height: 30px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newMessageButton:hover {
+  cursor: pointer;
+  color: rgb(117, 119, 124);
 }

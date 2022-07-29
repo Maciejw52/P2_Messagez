@@ -17,17 +17,17 @@ function GroupChat() {
     getGroupChatsFromFirebase(setChatNames)
   }, [])
 
-  let chatId = chatNames.find((x) => x.id === params.id);
+  let chat = chatNames.find((x) => x.id === params.id);
 
   return (
     <>
       <div style={{ display: "flex", felxDirection: "column" }}>
         <GroupChatsNav chatNames={chatNames} />
 
-        { !chatId ? <div>NO</div> : 
+        { !chat ? <div>NO</div> : 
           <div className="MessagesContainer">
-            <AllChatMessages chatId={chatId.id} />
-            <InputMessage chatId={chatId.id} />
+            <AllChatMessages chatId={chat.id} chatTitle={chat.title} />
+            <InputMessage chatId={chat.id} chatTitle={chat.title} />
           </div>
         }
       </div>

@@ -67,7 +67,7 @@ export async function sendMessage(chatId, user, text){
 export async function postGroupChat(chatId, text){
   
   try {
-    await addDoc(collection(db, "chats", chatId, "messages"), {
+    await addDoc(collection(db, "chatData", chatId, "data"), {
         text: text.trim(),
         timestamp: serverTimestamp(),
     });
@@ -105,7 +105,6 @@ export async function getGroupChatsFromFirebase(callback) {
         id: record.id,
         ...record.data(),
       }));
-
       console.log(messages)
       callback(messages);
     }
