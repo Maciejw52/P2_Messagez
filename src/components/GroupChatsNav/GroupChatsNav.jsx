@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import "./GroupChatsNav.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth"
-import { getGrouChatsFromFirebase } from "../../services/firebase";
 
-import { Groups }  from "./TempGroupChats";
-
-function GroupChatsList() {
+function GroupChatsList({chatNames}) {
 
   const { currentUser } = useAuth();
 
 
-  const [ chatNames, setChatNames] = useState([])
-
-  useEffect(() => {
-    getGrouChatsFromFirebase(setChatNames)
-    console.log(chatNames)
-  }, [])
 
   return (
     <div style={{
@@ -35,7 +26,7 @@ function GroupChatsList() {
         </div>
         <div className='chatsAll'>
           <ul style={{listStyleType: "none"}}>
-            {Groups.map((SingleGroupChat, key) => {
+            {chatNames.map((SingleGroupChat, key) => {
               return (
                 <div key={key} className="tempName">
                 <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.id}`}>

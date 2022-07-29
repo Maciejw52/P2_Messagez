@@ -93,7 +93,7 @@ export async function getMessagesFromFirebase(chatId, callback) {
 }
 
 
-export async function getGrouChatsFromFirebase(callback) {
+export async function getGroupChatsFromFirebase(callback) {
   return onSnapshot(
     query(
       collection(db, "chatData"),
@@ -105,6 +105,8 @@ export async function getGrouChatsFromFirebase(callback) {
         id: record.id,
         ...record.data(),
       }));
+
+      console.log(messages)
       callback(messages);
     }
   )
