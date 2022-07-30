@@ -97,8 +97,7 @@ export async function getGroupChatsFromFirebase(callback) {
   return onSnapshot(
     query(
       collection(db, "chatData"),
-      //will order by lastestTime messaged
-      //orderBy("timestamp", "asc")
+      orderBy("updated_at", "desc")
     ),
     (query) => {
       const messages = query.docs.map((record) => ({

@@ -3,6 +3,7 @@ import "./GroupChatsNav.css";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import AddGroupChat from "../AddGroupChat/AddGroupChat"
 
 function GroupChatsList({chatNames}) {
 
@@ -17,7 +18,7 @@ function GroupChatsList({chatNames}) {
             <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
           </div>
           <div className='chatsTitle'>Chats</div>
-          <div className='newMessageButton'><span className="material-icons newMessageButton">group_add</span></div>
+          <div className='newMessageButton'><AddGroupChat/></div>
         </div>
         <div className='searchMessagez' style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
           <SearchBar/>
@@ -29,7 +30,7 @@ function GroupChatsList({chatNames}) {
                 <div key={key} className="tempName">
                 <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.id}`}>
                 <li key={SingleGroupChat.id} className="singleGroupChatContainer">
-                      <div><img className='chatIcon' src={`${currentUser.photoURL}`} alt="GC"/></div>
+                      <div><img className='chatIcon' src={`${SingleGroupChat.ImageUrl}`} alt="GC"/></div>
                     <span className="">{SingleGroupChat.title}</span>
                   </li>
                 </Link>

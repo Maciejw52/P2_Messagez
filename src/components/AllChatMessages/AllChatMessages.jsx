@@ -53,7 +53,7 @@ function Message({ message, isOwnMessage }) {
         <img className='profileImage' referrerPolicy='no-referrer' src={`${photoURL}`} alt="Profile"></img>
       }
       <div>
-        <div className="sender">{isOwnMessage ? '' : displayName}</div>
+        <div className="sender">{isOwnMessage ? 'You' : displayName}</div>
         {/* <div className=''>{currentTimestamp}</div> */}
       </div>
       <div className=''>{text}</div>
