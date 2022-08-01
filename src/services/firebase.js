@@ -61,8 +61,13 @@ export async function sendMessage(chatId, user, text){
     });
 
     updateDoc(doc(db, "chatData", chatId), {
-      updated_at: serverTimestamp()
+      updated_at: serverTimestamp(),
+      latest_message_sender: user.displayName,
+      latest_message_uid: user.uid,
+      latest_message: text.trim()
     }).catch(err => console.log(err))
+
+    
 
   } catch (error) {
       console.log(error);

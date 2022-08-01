@@ -48,7 +48,7 @@ function Message({ message, isOwnMessage }) {
   // }, [message])
 
   return (
-    <li className={['SingleMessage', isOwnMessage && 'own-message'].join(' ')}>
+    <li className={isOwnMessage ? "SingleMessage own-message" : "SingleMessage"}>
       {isOwnMessage ? null :
         <img className='profileImage' referrerPolicy='no-referrer' src={`${photoURL}`} alt="Profile"></img>
       }

@@ -3,14 +3,13 @@ import "./GroupChatsNav.css";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import AddGroupChat from "../AddGroupChat/AddGroupChat"
+import SearchBar from "../SearchBar/SearchBar";
 
 function GroupChatsList({chatNames}) {
 
   const { currentUser } = useAuth();
 
   let chatId = useParams();
-
-  console.log(chatId)
 
   return (
     <div style={{
@@ -25,9 +24,9 @@ function GroupChatsList({chatNames}) {
           <div className='chatsTitle'>Chats</div>
           <div className='newMessageButton'><AddGroupChat/></div>
         </div>
-        {/* <div className='searchMessagez' style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+        <div className='searchMessagez' style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
           <SearchBar/>
-        </div> */}
+        </div>
         <div className='chatsAll'>
           <ul style={{listStyleType: "none"}}>
             {chatNames.map((SingleGroupChat, key) => {
@@ -38,7 +37,14 @@ function GroupChatsList({chatNames}) {
                       key={SingleGroupChat.id}
                       className={SingleGroupChat.id === chatId.id? "currentSingleGroupChatContainer" : "singleGroupChatContainer"}>
                       <div><img className='chatIcon' src={`${SingleGroupChat.ImageUrl}`} alt="GC"/></div>
-                      <span className="GCTitle">{SingleGroupChat.title}</span>
+                      <span className='TitleAndLastMessage'>
+                        <div className="GroupChatTitle">{SingleGroupChat.title}</div>
+                        <div className="GroupChatLastMessage">
+                          {currentUser.uid === SingleGroupChat.latest_message_uid ?
+                            `You: ` : `${SingleGroupChat.latest_message_sender.split(" ", 1)[0]}: `}
+                            {SingleGroupChat.latest_message}
+                        </div>
+                      </span>
                   </li>
                 </Link>
               </div>
