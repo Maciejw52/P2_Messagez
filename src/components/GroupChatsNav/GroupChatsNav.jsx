@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import AddGroupChat from "../AddGroupChat/AddGroupChat"
 
-function GroupChatsList({chatNames}) {
+function GroupChatsList({chatNames, chatId }) {
 
   const { currentUser } = useAuth();
 
@@ -18,7 +18,7 @@ function GroupChatsList({chatNames}) {
             <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
           </div>
           <div className='chatsTitle'>Chats</div>
-          <div className='newMessageButton'><AddGroupChat/></div>
+          <div className='newMessageButton'><AddGroupChat chatId={chatId}/></div>
         </div>
         <div className='searchMessagez' style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
           <SearchBar/>
