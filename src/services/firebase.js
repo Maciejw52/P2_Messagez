@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 import { getStorage } from "firebase/storage"
 
@@ -59,6 +59,11 @@ export async function sendMessage(chatId, user, text){
         text: text.trim(),
         timestamp: serverTimestamp(),
     });
+
+    updateDoc(doc(db, "chatData", chatId), {
+      updated_at: serverTimestamp()
+    }).catch(err => console.log(err))
+
   } catch (error) {
       console.log(error);
   }
@@ -106,7 +111,6 @@ export async function getGroupChatsFromFirebase(callback) {
         id: record.id,
         ...record.data(),
       }));
-      console.log(messages)
       callback(messages);
     }
   )

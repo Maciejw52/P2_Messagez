@@ -22,10 +22,15 @@ function GroupChat() {
   return (
     <>
       <div style={{ display: "flex", felxDirection: "column" }}>
-        <GroupChatsNav chatNames={chatNames} />
+        <GroupChatsNav chatNames={chatNames} chatId={chat.id} />
 
         { !chat ? <div>NO</div> : 
           <div className="MessagesContainer">
+            <div className='IconAndName'>
+              <div><img className='chatIcon' src={`${chat.ImageUrl}`} alt="GC" /></div>
+              <span className="ChatTitle">{chat.title}</span>
+            </div>
+
             <AllChatMessages chatId={chat.id} chatTitle={chat.title} />
             <InputMessage chatId={chat.id} chatTitle={chat.title} />
           </div>

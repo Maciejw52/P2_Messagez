@@ -1,5 +1,5 @@
 import { Modal, Form, Button } from 'react-bootstrap'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import { postGroupChat, storage } from "../../services/firebase"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { v4 } from "uuid"

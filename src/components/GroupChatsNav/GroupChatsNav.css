@@ -54,6 +54,16 @@
   background-color: rgb(48, 53, 64);
 }
 
+.currentSingleGroupChatContainer {
+  height: 48px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  background-color: rgb(48, 53, 64);
+  border-radius: 8px;
+  padding-left: 0;
+}
+
 .chatIcon {
   height: 36px;
   width: 36px;
@@ -85,4 +95,10 @@ ul {
 .newMessageButton:hover {
   cursor: pointer;
   color: rgb(117, 119, 124);
+}
+
+.GCTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

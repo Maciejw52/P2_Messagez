@@ -1,6 +1,5 @@
 import React from 'react'
 import "./GroupChatsNav.css";
-import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import AddGroupChat from "../AddGroupChat/AddGroupChat"
@@ -15,25 +14,27 @@ function GroupChatsList({chatNames, chatId }) {
       <section className="utilsComp">
         <div className='titleComp'>
           <div>
-            <Link style={{ textDecoration: 'none' }} to={`../Account`}>
+            <Link style={{ textDecoration: 'none' }} to={`../account`}>
               <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
               </Link>
           </div>
           <div className='chatsTitle'>Chats</div>
-          <div className='newMessageButton'><AddGroupChat chatId={chatId}/></div>
+          <div className='newMessageButton'><AddGroupChat/></div>
         </div>
-        <div className='searchMessagez' style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
+        {/* <div className='searchMessagez' style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center"}}>
           <SearchBar/>
-        </div>
+        </div> */}
         <div className='chatsAll'>
           <ul style={{listStyleType: "none"}}>
             {chatNames.map((SingleGroupChat, key) => {
               return (
                 <div key={key} className="tempName">
-                <Link style={{ textDecoration: 'none' }} to={`../chats/${SingleGroupChat.id}`}>
-                <li key={SingleGroupChat.id} className="singleGroupChatContainer">
+                <Link style={{ textDecoration: 'none', color: "white" }} to={`../chats/${SingleGroupChat.id}`}>
+                    <li
+                      key={SingleGroupChat.id}
+                      className={SingleGroupChat.id === chatId ? "currentSingleGroupChatContainer" : "singleGroupChatContainer"}>
                       <div><img className='chatIcon' src={`${SingleGroupChat.ImageUrl}`} alt="GC"/></div>
-                    <span className="">{SingleGroupChat.title}</span>
+                      <span className="GCTitle">{SingleGroupChat.title}</span>
                   </li>
                 </Link>
               </div>
