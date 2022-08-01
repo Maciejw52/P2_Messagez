@@ -22,7 +22,7 @@ function GroupChat() {
   return (
     <>
       <div style={{ display: "flex", felxDirection: "column" }}>
-        <GroupChatsNav chatNames={chatNames} chatId={chat.id} />
+        <GroupChatsNav chatNames={chatNames} />
 
         { !chat ? <div>NO</div> : 
           <div className="MessagesContainer">

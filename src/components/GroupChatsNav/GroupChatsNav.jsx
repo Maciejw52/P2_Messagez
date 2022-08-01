@@ -1,12 +1,16 @@
 import React from 'react'
 import "./GroupChatsNav.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import AddGroupChat from "../AddGroupChat/AddGroupChat"
 
-function GroupChatsList({chatNames, chatId }) {
+function GroupChatsList({chatNames}) {
 
   const { currentUser } = useAuth();
+
+  let chatId = useParams();
+
+  console.log(chatId)
 
   return (
     <div style={{
@@ -32,7 +36,7 @@ function GroupChatsList({chatNames, chatId }) {
                 <Link style={{ textDecoration: 'none', color: "white" }} to={`../chats/${SingleGroupChat.id}`}>
                     <li
                       key={SingleGroupChat.id}
-                      className={SingleGroupChat.id === chatId ? "currentSingleGroupChatContainer" : "singleGroupChatContainer"}>
+                      className={SingleGroupChat.id === chatId.id? "currentSingleGroupChatContainer" : "singleGroupChatContainer"}>
                       <div><img className='chatIcon' src={`${SingleGroupChat.ImageUrl}`} alt="GC"/></div>
                       <span className="GCTitle">{SingleGroupChat.title}</span>
                   </li>
