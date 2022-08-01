@@ -64,12 +64,14 @@ export async function sendMessage(chatId, user, text){
   }
 }
 
-export async function postGroupChat(chatId, text){
+export async function postGroupChat(text, ImageUrl){
   
   try {
-    await addDoc(collection(db, "chatData", chatId, "data"), {
-        text: text.trim(),
-        timestamp: serverTimestamp(),
+    await addDoc(collection(db, "chatData"), {
+        title: text.trim(),
+        ImageUrl: ImageUrl,
+        created_at: serverTimestamp(),
+        updated_at: serverTimestamp(),
     });
   } catch (error) {
       console.log(error);
