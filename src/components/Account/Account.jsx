@@ -1,8 +1,9 @@
 import React from 'react'
+import "./Account.css"
 
 function Account() {
   return (
-    <div style={{color: "white"}}>Account</div>
+    <div className='AccountPage'>Account</div>
   )
 }
 

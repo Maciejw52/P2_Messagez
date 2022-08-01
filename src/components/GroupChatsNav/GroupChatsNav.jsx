@@ -15,7 +15,9 @@ function GroupChatsList({chatNames}) {
       <section className="utilsComp">
         <div className='titleComp'>
           <div>
-            <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
+            <Link style={{ textDecoration: 'none' }} to={`../Account`}>
+              <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
+              </Link>
           </div>
           <div className='chatsTitle'>Chats</div>
           <div className='newMessageButton'><AddGroupChat/></div>
