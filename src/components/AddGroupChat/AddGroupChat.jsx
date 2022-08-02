@@ -1,5 +1,6 @@
 import { Modal, Form, Button } from 'react-bootstrap'
 import React, { useState, useRef } from 'react'
+import { useAuth } from '../../hooks/useAuth'
 import { postGroupChat, storage } from "../../services/firebase"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { v4 } from "uuid"
@@ -9,6 +10,7 @@ function AddGroupChat() {
   const [showModal, setShowModal] = useState(false);
   const [impageUpload, setImageUpload] = useState(null)
 
+  const { currentUser } = useAuth();
   const chatNameRef = useRef();
   const FileNameRef = useRef();
 
@@ -19,7 +21,7 @@ function AddGroupChat() {
     const imageRef = ref(storage, `images/${impageUpload.name + v4()}`)
     uploadBytes(imageRef, impageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        postGroupChat(chatNameRef.current.value, url)
+        postGroupChat(currentUser ,chatNameRef.current.value, url)
         setShowModal(false)
       })
     }).catch(error => console.log(error))
@@ -40,7 +42,12 @@ function AddGroupChat() {
           <Modal.Body>
             <div className="form">
               <div className="input-container">
-                <Form.Control ref={chatNameRef} type="text"  placeholder='Chat Name' required />
+                <Form.Control
+                  ref={chatNameRef}
+                  type="text"
+                  placeholder='Chat Name'
+
+                />
               </div>
               <br />
               <div className="input-container">

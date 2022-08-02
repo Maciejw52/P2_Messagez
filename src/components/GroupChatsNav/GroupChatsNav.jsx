@@ -12,7 +12,7 @@ function GroupChatsList({chatNames}) {
   let chatId = useParams();
 
   return (
-    <div style={{
+    <nav style={{
       display: "flex", felxDirection: "column", margin: 0, padding: 0}}>
       <section className="utilsComp">
         <div className='titleComp'>
@@ -40,7 +40,7 @@ function GroupChatsList({chatNames}) {
                       <span className='TitleAndLastMessage'>
                         <div className="GroupChatTitle">{SingleGroupChat.title}</div>
                         <div className="GroupChatLastMessage">
-                          {currentUser.uid === SingleGroupChat.latest_message_uid ?
+                          { (currentUser.uid === SingleGroupChat.latest_message_uid) ?
                             `You: ` : `${SingleGroupChat.latest_message_sender.split(" ", 1)[0]}: `}
                             {SingleGroupChat.latest_message}
                         </div>
@@ -53,7 +53,7 @@ function GroupChatsList({chatNames}) {
           </ul>
         </div>
       </section>
-    </div>
+    </nav>
 
   )
 }

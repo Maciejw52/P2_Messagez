@@ -74,14 +74,17 @@ export async function sendMessage(chatId, user, text){
   }
 }
 
-export async function postGroupChat(text, ImageUrl){
+export async function postGroupChat(user, text, ImageUrl){
   
   try {
     await addDoc(collection(db, "chatData"), {
-        title: text.trim(),
-        ImageUrl: ImageUrl,
-        created_at: serverTimestamp(),
-        updated_at: serverTimestamp(),
+      title: text.trim(),
+      ImageUrl: ImageUrl,
+      created_at: serverTimestamp(),
+      updated_at: serverTimestamp(),
+      latest_message_sender: user.displayName,
+      latest_message_uid: user.uid,
+      latest_message: "Created Chat"
     });
   } catch (error) {
       console.log(error);
