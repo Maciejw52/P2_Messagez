@@ -27,8 +27,9 @@ function GroupChat() {
         { !chat ? <div>NO</div> : 
           <div className="MessagesContainer">
             <div className='IconAndName'>
-              <div><img className='chatIcon' src={`${chat.ImageUrl}`} alt="GC" /></div>
-              <span className="ChatTitle">{chat.title}</span>
+              <div><img className='chatIcon' src={`${chat.ImageUrl}`} alt="GC" />
+                <span className="ChatTitle noselect">{chat.title}</span></div>
+              <div className='MoreHorizontal'><span className="material-icons MoreHorizontal">more_horiz</span></div>
             </div>
 
             <AllChatMessages chatId={chat.id} chatTitle={chat.title} />

@@ -1,9 +1,9 @@
 .MessagesContainer {
   width: 100%;
-  height: calc(100vh - 72px);
+  height: var(--max-height);
   padding-left: 15px;
   padding-right: 15px;
-  padding-left: 15px;
+  padding-bottom: 15px;
   flex-grow: 1;
   border: 1px solid var(--color-gray);
   overflow: hidden;
@@ -15,12 +15,30 @@
   width: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #121722;
   padding: 10px;
   border-bottom: 1px solid var(--color-gray);
 }
 
 .ChatTitle {
-  color: white
+  color: var(--color-white)
 }
+
+.MoreHorizontal {
+  width: var(--icon-medium);
+  height: var(--icon-medium);
+  font-size: var(--icon-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.MoreHorizontal:hover {
+  background-color: var(--color-light-gray);
+}
+
+.MoreIcon {}

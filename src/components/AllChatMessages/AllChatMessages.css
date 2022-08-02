@@ -1,7 +1,11 @@
 .AllMessagesContainer {
   margin-bottom: 16px;
   flex: 1;
-  overflow-y:scroll;
+  overflow-y: scroll;
+  height: min(100%, fit-content);
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #484848 var(--color-background);
 }
 
 .MessageList {
@@ -15,7 +19,7 @@
   margin: 8px;
   background: var(--color-gray);
   border-radius: var(--border-radius);
-  color: aliceblue;
+  color: var(--color-white);
   text-align: left;
 }
 

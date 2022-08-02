@@ -1,19 +1,40 @@
 html, body {
-  background-color: #121722;
+  background-color: rgb(18, 23, 34);
 }
 
 .App {
-  background-color: #121722;
+  background-color: rgb(18, 23, 34);
 }
 
 html {
-  --color-background: hsl(216, 8%, 12%);
-  --color-blue: hsl(208, 100%, 50%);
-  --color-gray: hsl(210, 3%, 25%);
+  --color-background: 121722;
+  --color-blue: rgb(0, 136, 255);
+  --color-gray: rgb(56, 58, 59);
+  --color-light-gray: rgb(48, 53, 64);
   --color-white: white;
+
   --border-radius: 5px;
+
   --max-height: calc(100vh - 72px);
+  --icon-large: 42px;
+  --icon-medium: 36px;
+  --icon-small: 30px;
 
   background-color: var(--color-background);
   color: var(--color-white);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
