@@ -80,10 +80,16 @@ ul {
 .newMessageButton {
   width: var(--icon-medium);
   height: var(--icon-medium);
-  font-size: 30px;
+  font-size: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50%;
+}
+
+.newMessageButton:hover {
+  cursor: pointer;
+  background-color: var(--color-light-gray);
 }
 
 .TitleAndLastMessage {
