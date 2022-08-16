@@ -36,7 +36,7 @@ export function AllChatMessages({ chatId }) {
 
 
 function Message({ message, isOwnMessage }) {
-  const { displayName, text, photoURL, timestamp } = message;
+  const { displayName, text, photoURL } = message;
 
   
   
