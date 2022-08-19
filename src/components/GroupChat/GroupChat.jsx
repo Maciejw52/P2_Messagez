@@ -4,7 +4,7 @@ import GroupChatsNav from "../GroupChatsNav/GroupChatsNav"
 import { InputMessage} from "../InputMessage/InputMessage"
 import { useParams } from "react-router-dom"
 import { getGroupChatsFromFirebase } from "../../services/firebase";
-import GroupChatDropdown from "./GroupChatDropdown";
+import GroupChatInfo from "../GroupChatInfo/GroupChatInfo"
 
 import "./GroupChat.css"
 
@@ -30,7 +30,7 @@ function GroupChat() {
             <div className='IconAndName'>
               <div><img className='chatIcon' src={`${chat.ImageUrl}`} alt="GC" />
                 <span className="ChatTitle noselect">{chat.title}</span></div>
-              <div className='MoreHorizontal'><GroupChatDropdown chatId={chat.id} chatTitle={chat.title}/></div>
+              <div className='MoreHorizontal'><GroupChatInfo/></div>
             </div>
 
             <AllChatMessages chatId={chat.id} chatTitle={chat.title} />

@@ -5,7 +5,7 @@ import { useAuth } from "../../hooks/useAuth";
 import AddGroupChat from "../AddGroupChat/AddGroupChat"
 import SearchBar from "../SearchBar/SearchBar";
 
-function GroupChatsList({chatNames}) {
+export default function GroupChatsList({chatNames}) {
 
   const { currentUser } = useAuth();
 
@@ -57,5 +57,3 @@ function GroupChatsList({chatNames}) {
 
   )
 }
-
-export default GroupChatsList
