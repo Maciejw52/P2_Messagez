@@ -4,7 +4,7 @@
 }
 
 .messageInput {
-  padding: 12px 8px;
+  padding: 5px 5px;
   flex: 1;
   border-radius: var(--border-radius);
 }

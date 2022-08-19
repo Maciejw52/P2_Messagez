@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, updateDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 import { getStorage } from "firebase/storage"
 
@@ -124,7 +124,24 @@ export async function getGroupChatsFromFirebase(callback) {
   )
 }
 
+export async function deleteAllMessagesInGroupChat(chatId) {
+  try {
+    await deleteDoc(doc(db, "chats", chatId)).then(() => {
+      console.log(`Deleted all group chat messages for chat ${chatId}`);
+    })
+    
+  } catch {
+    console.log("Could not deleted Group Chat Data");
+  }
+}
 
+export async function deleteGroupChat(chatId) {
+  try {
+    await deleteDoc(doc(db, "chatData", chatId));
+  } catch {
+    console.log("Deleted Group Chat");
+  }
+}
 // get friends call
 
 // send add friend

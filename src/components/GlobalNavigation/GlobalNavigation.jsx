@@ -25,7 +25,7 @@ function GlobalNavigation() {
       <Navbar.Collapse id="responsive-navbar-nav">  
         <Nav className="me-auto">
           <Link to="/" className='nav-link'>Chats</Link>
-            <Link to="/friends" className='nav-link'>Friends</Link>
+            {/* <Link to="/friends" className='nav-link'>Friends</Link> */}
         </Nav>
         <Nav>
             <Link to="/account" className='nav-link'>{currentUser !== null ? currentUser.displayName : null}</Link>

@@ -6,12 +6,14 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 6px;
-  border-top: 1px solid var(--color-gray);
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+  border-right: 1px solid var(--color-gray);  
 }
 
 .titleComp {
-  height: 56px;
+  height: 62px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -34,7 +36,7 @@
 }
 
 .singleGroupChatContainer {
-  height: 48px;
+  height: 64px;
   width: auto;
   display: flex;
   align-items: center;
@@ -48,7 +50,7 @@
 }
 
 .currentSingleGroupChatContainer {
-  height: 48px;
+  height: 64px;
   margin-right: 5px;
   width: auto;
   display: flex;
@@ -59,8 +61,8 @@
 }
 
 .chatIcon {
-  height: var(--icon-medium);
-  width: var(--icon-medium);
+  height: var(--icon-large);
+  width: var(--icon-large);
   border-radius: 50%;
   margin-right: 10px;
   margin-left: 10px;
@@ -73,13 +75,13 @@ ul {
 
 .profileImage {
   border-radius: 50%;
-  width: var(--icon-medium);
-  height: var(--icon-medium);
+  width: var(--icon-large);
+  height: var(--icon-large);
 }
 
 .newMessageButton {
-  width: var(--icon-medium);
-  height: var(--icon-medium);
+  width: var(--icon-large);
+  height: var(--icon-large);
   font-size: 24px;
   display: flex;
   justify-content: center;

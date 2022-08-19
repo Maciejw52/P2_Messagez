@@ -5,7 +5,6 @@
   padding-right: 15px;
   padding-bottom: 15px;
   flex-grow: 1;
-  border: 1px solid var(--color-gray);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -18,7 +17,6 @@
   justify-content: space-between;
   background-color: #121722;
   padding: 10px;
-  border-bottom: 1px solid var(--color-gray);
 }
 
 .ChatTitle {
@@ -26,9 +24,9 @@
 }
 
 .MoreHorizontal {
-  width: var(--icon-medium);
-  height: var(--icon-medium);
-  font-size: var(--icon-medium);
+  width: var(--icon-large);
+  height: var(--icon-large);
+  font-size: var(--icon-large);
   display: flex;
   justify-content: center;
   align-items: center;
