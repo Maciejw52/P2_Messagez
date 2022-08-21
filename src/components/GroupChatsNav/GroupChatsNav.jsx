@@ -19,7 +19,7 @@ export default function GroupChatsList({chatNames}) {
           <div>
             <Link style={{ textDecoration: 'none' }} to={`../account`}>
               <img className='profileImage' referrerPolicy='no-referrer' src={`${currentUser.photoURL}`} alt="Profile"></img>
-              </Link>
+            </Link>
           </div>
           <div className='noselect'>Chats</div>
           <div className='newMessageButton'><AddGroupChat/></div>

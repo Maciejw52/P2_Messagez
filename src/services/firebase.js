@@ -23,10 +23,13 @@ export async function loginWithGoogleAccount() {
     const auth = getAuth();
     const { user } = await signInWithPopup(auth, provider);
 
+    console.log(user)
+
     return {
       uid: user.uid,
       displayName: user.displayName,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
+      email: user.email
     }
 
   } catch (error) {

@@ -16,6 +16,7 @@ html {
   --border-radius: 5px;
 
   --max-height: calc(100vh - 72px);
+  --icon-extremely-large: 128px ;
   --icon-large: 42px;
   --icon-medium: 36px;
   --icon-small: 30px;

@@ -1,4 +1,34 @@
 .AccountPage {
   color: white;
   height: var(--max-height);
+  display: flex;
+  justify-content: center;
+
+}
+
+.AccountMainContainer {
+  border: 1px dashed var(--color-white);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.AccountProfileImage {
+  border-radius: 50%;
+  width: var(--icon-extremely-large);
+  height: var(--icon-extremely-large);
+}
+
+.AccountAttribute {
+  border: 1px dashed var(--color-white);
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100px;
+}
+
+.AccountDetail {
+  border: 1px dashed var(--color-white);
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 200px;
 }
