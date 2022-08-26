@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, updateDoc, doc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, updateDoc, doc, deleteDoc, arrayUnion, getDoc } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 import { getStorage } from "firebase/storage"
 
@@ -22,8 +22,6 @@ export async function loginWithGoogleAccount() {
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     const { user } = await signInWithPopup(auth, provider);
-
-    console.log(user)
 
     return {
       uid: user.uid,
@@ -88,7 +86,12 @@ export async function postGroupChat(user, text, ImageUrl){
       latest_message_sender: user.displayName,
       latest_message_uid: user.uid,
       latest_message: "Created Chat"
-    });
+    }).then((DocumentReference) => {
+      // User that has added the group chat will have its group_chats field updated with the new group chat
+      updateDoc(doc(db, "userData", user.uid), {
+        group_chats: arrayUnion(...[DocumentReference.id])
+      }).catch( err => console.log(`Could not update group_chats for user. Error: ${err}`) );
+    })
   } catch (error) {
       console.log(error);
   }
@@ -109,7 +112,6 @@ export async function getMessagesFromFirebase(chatId, callback) {
     }
   )
 }
-
 
 export async function getGroupChatsFromFirebase(callback) {
   return onSnapshot(
@@ -145,8 +147,37 @@ export async function deleteGroupChat(chatId) {
     console.log("Deleted Group Chat");
   }
 }
-// get friends call
 
-// send add friend
+export async function userDataExists(userUid) {
 
-// send delete friend
+  const ref = doc(db, "userData", userUid)
+
+  const docSnap = await getDoc(ref);
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+  }
+
+  return false
+}
+
+export async function addUserData(userUid, userName) {
+  // // Global chats that each user will have when first logged in
+  // const globals = ["BwEe7eSjlyw5QzopBKGc", "jYzIGfuUysdRhEQKeEWA", "JvWBnikFknTqwScKvbpa"];
+
+  // try {
+  //   await setDoc(doc(db, "userData", userUid), {
+  //     uid: userName,  
+  //     created_at: serverTimestamp()
+  //   }).then(() => {
+  //     updateDoc(doc(db, "userData", userUid), {
+  //       group_chats: arrayUnion(...globals)
+  //     }).catch( err => console.log(`Could not update group_chats with the global chats. Error: ${err}`) );
+  //   })
+  // } catch (error) {
+  //   console.log(error);
+  // }
+}
