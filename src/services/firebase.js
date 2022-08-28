@@ -1,5 +1,18 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, updateDoc, doc, deleteDoc, arrayUnion, getDoc } from 'firebase/firestore';
+import { 
+  getFirestore, 
+  collection, 
+  addDoc, 
+  serverTimestamp, 
+  onSnapshot, 
+  query, 
+  orderBy, 
+  updateDoc, 
+  doc, 
+  deleteDoc, 
+  arrayUnion, 
+  getDoc,
+  setDoc } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 import { getStorage } from "firebase/storage"
 
@@ -150,34 +163,26 @@ export async function deleteGroupChat(chatId) {
 
 export async function userDataExists(userUid) {
 
-  const ref = doc(db, "userData", userUid)
-
-  const docSnap = await getDoc(ref);
+  const docSnap = await getDoc(doc(db, "userData", userUid));
 
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
+    console.log(true);
+    return true;
   }
-
-  return false
+  console.log(false)
+  return false;
 }
 
 export async function addUserData(userUid, userName) {
-  // // Global chats that each user will have when first logged in
-  // const globals = ["BwEe7eSjlyw5QzopBKGc", "jYzIGfuUysdRhEQKeEWA", "JvWBnikFknTqwScKvbpa"];
+  // GUpon first login user is assigned the
 
-  // try {
-  //   await setDoc(doc(db, "userData", userUid), {
-  //     uid: userName,  
-  //     created_at: serverTimestamp()
-  //   }).then(() => {
-  //     updateDoc(doc(db, "userData", userUid), {
-  //       group_chats: arrayUnion(...globals)
-  //     }).catch( err => console.log(`Could not update group_chats with the global chats. Error: ${err}`) );
-  //   })
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  try {
+    await setDoc(doc(db, "userData", userUid), {
+      uid: userName,  
+      group_chats: ["BwEe7eSjlyw5QzopBKGc", "jYzIGfuUysdRhEQKeEWA", "JvWBnikFknTqwScKvbpa"],
+      created_at: serverTimestamp()
+    })
+  } catch (error) {
+    console.log(error);
+  }
 }

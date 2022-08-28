@@ -20,10 +20,12 @@ export const AuthProvider = (params) => {
       // sets the currentUser
       setCurrentUser(currentUser);
       
-      if(!userDataExists(currentUser.uid)){
-        addUserData(currentUser.uid, currentUser.displayName);
-        //console.log(currentUser);
+      userDataExists(currentUser.uid).then((res) => {
+        if(!res){
+          addUserData(currentUser.uid, currentUser.displayName);
         }
+      })
+
     }
   }
 
