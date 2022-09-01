@@ -10,9 +10,7 @@ import {
   updateDoc, 
   doc, 
   deleteDoc, 
-  arrayUnion, 
-  getDoc,
-  setDoc } from 'firebase/firestore';
+  arrayUnion } from 'firebase/firestore';
 import { GoogleAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
 import { getStorage } from "firebase/storage"
 
@@ -25,8 +23,8 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID
 }
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 export const storage = getStorage(app);
 
 export async function loginWithGoogleAccount() {
@@ -63,31 +61,6 @@ export async function Logout() {
   }
 }
 
-export async function sendMessage(chatId, user, text){
-  
-  try {
-    await addDoc(collection(db, "chats", chatId, "messages"), {
-        uid: user.uid,
-        displayName: user.displayName,
-        photoURL: user.photoURL,
-        text: text.trim(),
-        timestamp: serverTimestamp(),
-    });
-
-    updateDoc(doc(db, "chatData", chatId), {
-      updated_at: serverTimestamp(),
-      latest_message_sender: user.displayName,
-      latest_message_uid: user.uid,
-      latest_message: text.trim()
-    }).catch(err => console.log(err))
-
-    
-
-  } catch (error) {
-      console.log(error);
-  }
-}
-
 export async function postGroupChat(user, text, ImageUrl){
   
   try {
@@ -110,22 +83,6 @@ export async function postGroupChat(user, text, ImageUrl){
   }
 }
 
-export async function getMessagesFromFirebase(chatId, callback) {
-  return onSnapshot(
-    query(
-      collection(db, "chats", chatId, "messages"),
-      orderBy("timestamp", "asc")
-    ),
-    (querySnapshot) => {
-      const messages = querySnapshot.docs.map((x) => ({
-        id: x.id,
-        ...x.data(),
-      }));
-      callback(messages);
-    }
-  )
-}
-
 export async function getGroupChatsFromFirebase(callback) {
   return onSnapshot(
     query(
@@ -142,47 +99,10 @@ export async function getGroupChatsFromFirebase(callback) {
   )
 }
 
-export async function deleteAllMessagesInGroupChat(chatId) {
-  try {
-    await deleteDoc(doc(db, "chats", chatId)).then(() => {
-      console.log(`Deleted all group chat messages for chat ${chatId}`);
-    })
-    
-  } catch {
-    console.log("Could not deleted Group Chat Data");
-  }
-}
-
 export async function deleteGroupChat(chatId) {
   try {
     await deleteDoc(doc(db, "chatData", chatId));
   } catch {
     console.log("Deleted Group Chat");
-  }
-}
-
-export async function userDataExists(userUid) {
-
-  const docSnap = await getDoc(doc(db, "userData", userUid));
-
-  if (docSnap.exists()) {
-    console.log(true);
-    return true;
-  }
-  console.log(false)
-  return false;
-}
-
-export async function addUserData(userUid, userName) {
-  // GUpon first login user is assigned the
-
-  try {
-    await setDoc(doc(db, "userData", userUid), {
-      uid: userName,  
-      group_chats: ["BwEe7eSjlyw5QzopBKGc", "jYzIGfuUysdRhEQKeEWA", "JvWBnikFknTqwScKvbpa"],
-      created_at: serverTimestamp()
-    })
-  } catch (error) {
-    console.log(error);
   }
 }

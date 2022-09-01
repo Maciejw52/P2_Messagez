@@ -1,6 +1,7 @@
 import React from "react";
 import { createContext, useState } from "react";
-import { loginWithGoogleAccount, Logout, addUserData, userDataExists } from "../services/firebase";
+import { loginWithGoogleAccount, Logout } from "../services/firebase";
+import { addUserData, userDataExists } from "../services/api/userApi";
 
 export const AuthContext = createContext();
 
@@ -21,8 +22,12 @@ export const AuthProvider = (params) => {
       setCurrentUser(currentUser);
       
       userDataExists(currentUser.uid).then((res) => {
+        console.log(res)
         if(!res){
           addUserData(currentUser.uid, currentUser.displayName);
+        } else {
+          console.log(res.data())
+
         }
       })
 

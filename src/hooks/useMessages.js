@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getMessagesFromFirebase } from '../services/firebase';
+import { getMessagesFromFirebase } from '../services/api/messageApi';
 
 export function useMessages(chatId) {
 
