@@ -11,19 +11,21 @@ export async function userDataExists(userUid) {
   const docSnap = await getDoc(doc(db, "userData", userUid));
 
   if (docSnap.exists()) {
-    console.log(true);
+    console.log("User Exists");
     return docSnap;
   }
-  console.log(false)
+  console.log("User does not exist");
   return false;
 }
 
-export async function addUserData(userUid, userName) {
+export async function addUserData(user) {
   // GUpon first login user is assigned the
 
   try {
-    await setDoc(doc(db, "userData", userUid), {
-      uid: userName,  
+    await setDoc(doc(db, "userData", user.uid), {
+      uid: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
       group_chats: ["BwEe7eSjlyw5QzopBKGc", "jYzIGfuUysdRhEQKeEWA", "JvWBnikFknTqwScKvbpa"],
       created_at: serverTimestamp()
     })
@@ -33,9 +35,8 @@ export async function addUserData(userUid, userName) {
 }
 
 export async function getUserData(UserUid) {
-
   try {
-    await getDoc(doc(db, "userData", UserUid))
+    return await getDoc(doc(db, "userData", UserUid))
   } catch {
 
   }

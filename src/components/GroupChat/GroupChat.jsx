@@ -5,17 +5,22 @@ import { InputMessage} from "../InputMessage/InputMessage"
 import { useParams } from "react-router-dom"
 import { getGroupChatsFromFirebase } from "../../services/firebase";
 import GroupChatInfo from "../GroupChatInfo/GroupChatInfo"
+import { useAuth } from '../../hooks/useAuth'
+import { getGruopChatsForUser } from '../../services/firebase'
 
 import "./GroupChat.css"
 
 function GroupChat() {
 
   const params = useParams();
+  const { currentUser } = useAuth();
 
   const [chatNames, setChatNames] = useState([])
 
   useEffect(() => {
-    getGroupChatsFromFirebase(setChatNames)
+    console.log(currentUser)
+    //getGroupChatsFromFirebase(setChatNames)
+    getGruopChatsForUser(currentUser, setChatNames);
   }, [])
 
   let chat = chatNames.find((x) => x.id === params.id);

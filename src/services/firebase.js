@@ -62,7 +62,7 @@ export async function Logout() {
 }
 
 export async function postGroupChat(user, text, ImageUrl){
-  
+
   try {
     await addDoc(collection(db, "chatData"), {
       title: text.trim(),
@@ -97,6 +97,27 @@ export async function getGroupChatsFromFirebase(callback) {
       callback(messages);
     }
   )
+}
+
+export async function getGruopChatsForUser(user, callback) {
+  
+  
+  console.log(user)
+  return onSnapshot(
+    query(
+      collection(db, "chatData"),
+      orderBy("updated_at", "desc")
+    ),
+    (query) => {
+      const messages = query.docs.map((record) => ({
+        id: record.id,
+        ...record.data(),
+      }));
+      callback(messages);
+    }
+  )
+
+
 }
 
 export async function deleteGroupChat(chatId) {

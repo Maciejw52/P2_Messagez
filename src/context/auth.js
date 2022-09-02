@@ -18,16 +18,17 @@ export const AuthProvider = (params) => {
     if (!currentUser) {
       console.log("User failed to login!");
     } else {
-      // sets the currentUser
-      setCurrentUser(currentUser);
       
       userDataExists(currentUser.uid).then((res) => {
-        console.log(res)
         if(!res){
-          addUserData(currentUser.uid, currentUser.displayName);
+          addUserData(currentUser);
+          currentUser["group_chats"] = ["BwEe7eSjlyw5QzopBKGc", "jYzIGfuUysdRhEQKeEWA", "JvWBnikFknTqwScKvbpa"];
+          setCurrentUser(currentUser);
+          console.log(currentUser)
         } else {
-          console.log(res.data())
-
+          //console.log(res.data())
+          setCurrentUser(res.data());
+          console.log(currentUser)
         }
       })
 
