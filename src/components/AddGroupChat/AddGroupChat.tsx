@@ -1,5 +1,5 @@
 import { Modal, Form, Button } from 'react-bootstrap'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, MutableRefObject } from 'react'
 import { useAuth } from '../../hooks/useAuth'
 import { postGroupChat, storage } from "../../services/firebase"
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
@@ -11,8 +11,8 @@ function AddGroupChat() {
   const [impageUpload, setImageUpload] = useState(null)
 
   const { currentUser } = useAuth();
-  const chatNameRef = useRef();
-  const FileNameRef = useRef();
+  const chatNameRef: MutableRefObject<undefined> = useRef();
+  const FileNameRef: MutableRefObject<undefined> = useRef();
 
   const uploadImage = (event) => {
     event.preventDefault();
