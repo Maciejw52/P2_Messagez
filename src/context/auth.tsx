@@ -3,10 +3,10 @@ import { createContext, useState } from "react";
 import { loginWithGoogleAccount, Logout } from "../services/firebase";
 import { addUserData, userDataExists } from "../services/api/userApi";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(undefined);
 
 // Provider for authorisation of the application
-export const AuthProvider = (params) => {
+export const AuthProvider = (params: JSX.IntrinsicAttributes & React.ProviderProps<any>) => {
 
   // currentUser object which will contain all data stored by Google upon login
   const [currentUser, setCurrentUser] = useState(null);
@@ -37,7 +37,7 @@ export const AuthProvider = (params) => {
 
   // logout function
   const logout = async () => {
-    Logout().then(setCurrentUser(null));
+    Logout().then(() => setCurrentUser(null));
   }
 
   const value = { currentUser, login, logout };

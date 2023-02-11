@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore';
 import {db} from "../firebase";
 
-export async function sendMessage(chatId, user, text){
+export async function sendMessage(chatId: string, user: { uid: any; displayName: any; photoURL: any; }, text: string){
   
   try {
     await addDoc(collection(db, "chats", chatId, "messages"), {
