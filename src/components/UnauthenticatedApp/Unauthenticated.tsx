@@ -19,7 +19,7 @@ export function UnauthenticatedApp() {
         </div>
         <br/>
         <div className="loginPrompt">
-          Please Login to explore our app.
+          Please Login to message your friends.
         </div>
         <div>
           <Button className="btn loginButtonUnauth" onClick={login}>

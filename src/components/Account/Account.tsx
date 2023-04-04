@@ -4,8 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 
 import "./Account.css"
 
-function Account() {
-
+const Account = () => {
   const { currentUser } = useAuth();
 
   return (

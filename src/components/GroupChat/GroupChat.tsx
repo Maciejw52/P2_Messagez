@@ -3,7 +3,6 @@ import { AllChatMessages} from '../AllChatMessages/AllChatMessages'
 import GroupChatsNav from "../GroupChatsNav/GroupChatsNav"
 import { InputMessage} from "../InputMessage/InputMessage"
 import { useParams } from "react-router-dom"
-import { getGroupChatsFromFirebase } from "../../services/firebase";
 import GroupChatInfo from "../GroupChatInfo/GroupChatInfo"
 import { useAuth } from '../../hooks/useAuth'
 import { getGruopChatsForUser } from '../../services/firebase'
@@ -37,9 +36,8 @@ function GroupChat() {
                 <span className="ChatTitle noselect">{chat.title}</span></div>
               <div className='MoreHorizontal'><GroupChatInfo/></div>
             </div>
-
-            <AllChatMessages chatId={chat.id} chatTitle={chat.title} />
-            <InputMessage chatId={chat.id} chatTitle={chat.title} />
+            <AllChatMessages chatId={chat.id} />
+            <InputMessage chatId={chat.id} />
           </div>
         }
       </div>

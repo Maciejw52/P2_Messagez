@@ -7,14 +7,18 @@ import {
   Form
 } from "react-bootstrap"
 
-export function InputMessage({ chatId }) {
+interface InputMessageProps {
+  chatId: string
+}
+
+export function InputMessage({ chatId }: InputMessageProps) {
 
     const { currentUser } = useAuth();
     const [value, setValue] = useState('');
 
     const handleSubmitMessage = (event) => {
         event.preventDefault();
-        sendMessage(chatId, currentUser, value);
+        sendMessage({chatId, currentUser, value});
         setValue('');
     };
 
@@ -33,7 +37,7 @@ export function InputMessage({ chatId }) {
               required
               minLength={1}
           />
-          <Button type="submit" disabled={value < 1} className="btn">
+          <Button type="submit" disabled={value.length < 1} className="btn">
                 Send
           </Button>
         </Form>

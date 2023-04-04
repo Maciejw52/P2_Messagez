@@ -4,8 +4,11 @@ import { useMessages } from "../../hooks/useMessages";
  
 import "./AllChatMessages.css";
 
-export function AllChatMessages({ chatId }) {
-  
+export interface MessageProps {
+  chatId: string,
+}
+
+export function AllChatMessages({ chatId }: MessageProps) {
   const containerRef = useRef(null);
   const { currentUser } = useAuth(); 
   const messages = useMessages(chatId)

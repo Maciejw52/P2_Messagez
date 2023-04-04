@@ -6,7 +6,7 @@ export function useMessages(chatId) {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    getMessagesFromFirebase(chatId, setMessages);
+    getMessagesFromFirebase({chatId, setMessages});
   }, [chatId]);
   
   return messages;
