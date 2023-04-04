@@ -2,6 +2,7 @@
   "name": "messaging-app",
   "version": "1.0.0",
   "license": "MIT",
+  "homepage": ".",
   "scripts": {
     "start": "nx exec -- vite",
     "serve": "nx exec -- vite",

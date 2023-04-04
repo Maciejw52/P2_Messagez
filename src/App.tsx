@@ -13,7 +13,7 @@ function App() {
   const { currentUser } = useAuth();
 
   return (
-    <Router>
+    <Router basename='/'>
     <GlobalNavigation />
       <div className="App">
         {currentUser !== null ? <AuthenticatedApp /> : <UnauthenticatedApp />}
