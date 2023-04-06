@@ -19,7 +19,7 @@ function GlobalNavigation() {
   return (
     <Navbar className="navbar" collapseOnSelect expand="lg" variant="dark">
       <Container>
-        <Link to="/" className='navbar-brand NavbarTitle'>Messagez</Link>
+        <Link to="/" className='navbar-brand NavbarTitle'>Messagezzz</Link>
       
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse id="responsive-navbar-nav">  
