@@ -28,7 +28,7 @@ function GlobalNavigation() {
             {/* <Link to="/friends" className='nav-link'>Friends</Link> */}
         </Nav>
         <Nav>
-            <Link to="/account" className='nav-link'>{currentUser !== null ? currentUser.displayName : null}</Link>
+            <Link to="/#/account" className='nav-link'>{currentUser !== null ? currentUser.displayName : null}</Link>
             {currentUser === null ?
               <Nav.Item>
                 <Button className="btn login" onClick={login}>

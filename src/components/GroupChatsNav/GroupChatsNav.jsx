@@ -32,7 +32,7 @@ export default function GroupChatsList({chatNames}) {
             {chatNames.map((SingleGroupChat, key) => {
               return (
                 <div key={key} className="tempName">
-                <Link style={{ textDecoration: 'none', color: "white" }} to={`../chats/${SingleGroupChat.id}`}>
+                <Link style={{ textDecoration: 'none', color: "white" }} to={`../#/chats/${SingleGroupChat.id}`}>
                     <li
                       key={SingleGroupChat.id}
                       className={SingleGroupChat.id === chatId.id? "currentSingleGroupChatContainer" : "singleGroupChatContainer"}>
