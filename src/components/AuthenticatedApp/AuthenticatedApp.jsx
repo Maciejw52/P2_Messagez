@@ -14,8 +14,8 @@ export function AuthenticatedApp() {
     <div>
       <Routes>  
         <Route exact path="/" element={<GroupChats />}/>
-        <Route path="/chats/:id" element={<GroupChats />} />
-        <Route exact path="/account" element={<Account/>}/>
+        <Route path="/#/chats/:id" element={<GroupChats />} />
+        <Route exact path="/#/account" element={<Account/>}/>
       </Routes>
     </div>
   )
