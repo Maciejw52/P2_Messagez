@@ -19,9 +19,9 @@ function GroupChat() {
 
   useEffect(() => {
     console.log(currentUser)
-    //getGroupChatsFromFirebase(setChatNames)
+    getGroupChatsFromFirebase(setChatNames)
     getGruopChatsForUser(currentUser, setChatNames);
-  }, [])
+  }, [currentUser])
 
   let chat = chatNames.find((x) => x.id === params.id);
 
